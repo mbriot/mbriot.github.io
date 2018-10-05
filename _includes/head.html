@@ -17,4 +17,8 @@
     <!-- PrismJS -->
     <link rel="stylesheet" href="{{ "/css/prism.css" | prepend: site.baseurl }}">
 
+		{% if site.google_analytics and jekyll.environment == 'production' %}
+		{% include analytics.html %}
+		{% endif %}
+
 </head>

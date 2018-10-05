@@ -17,3 +17,4 @@ plugins:
   - jekyll-seo-tag
 lang: fr_FR
 author: manuel briot
+site.google_analytics: UA-127041172-1

@@ -1,9 +1,9 @@
 ---
 layout: home
 ---
-<h2>My posts</h2>
+<h2>Mes billets</h2>
 
 {% for post in site.posts %}
-  <p class="post">{{ post.date | date: "%Y-%m-%d" }} - <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> ({{ post.language }})</p>
+  <p class="post">{{ post.date | date: "%Y-%m-%d" }} - <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
   <div class="post-excerpt">{{ post.excerpt }}</div>
 {% endfor %}

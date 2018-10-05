@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Premier billet pour tester"
+description: "On fait des tests pour l'instant rien de plus"
 date:   2018-10-01 11:00:00
 tags: test
 ---

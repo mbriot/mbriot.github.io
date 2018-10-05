@@ -16,3 +16,4 @@ kramdown:
 plugins:
   - jekyll-seo-tag
 lang: fr_FR
+author: manuel briot

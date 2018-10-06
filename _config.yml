@@ -15,5 +15,6 @@ kramdown:
       disable : true
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 lang: fr_FR
 author: manuel briot

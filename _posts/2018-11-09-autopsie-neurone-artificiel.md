@@ -6,9 +6,9 @@ date:   2018-11-09 11:00:00
 tags: machine-learning
 ---
 
-Créer un réseau de neurones comportant plusieurs couches de profondeurs et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre un implémenter un seul neurone soi même me paraît être une bonne idée.
+Créer un réseau de neurones comportant plusieurs couches de profondeur et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre a implémenter un seul neurone soi même me paraît être une bonne idée.
 
-Nous allons voir dans cet article comment en implémenter un en python. Vous pouvez retrouver l'ensemble du code et les données d'entrainement dans ce repository [github](https://github.com/mbriot/mbriot.github.io).
+Nous allons voir dans cet article comment le faire en python. Vous pouvez retrouver l'ensemble du code et les données d'entrainement dans ce repository [github](https://github.com/mbriot/mbriot.github.io).
 
 <hr/>
 
@@ -21,9 +21,9 @@ Nous allons voir dans cet article comment en implémenter un en python. Vous pou
 
 ## Préparation des données <a class="anchor" id="prepare-data"></a>
 
-Quand on fait du machine-learning, en général, c'est que l'on veut prédire quelque chose. Et comme cet article se veut le plus simple possible, j'ai construis un jeu de donnée à partir d'une liste de prénom trouvée [ici](https://www.kaggle.com/kaggle/us-baby-names#NationalNames.csv) auquel j'ai ajouté une valeur à prédire en fonction d'une règle très simple.
+Quand on fait du machine-learning, en général, c'est que l'on veut prédire quelque chose. Et comme cet article se veut le plus simple possible, j'ai construis un jeu de données à partir d'une liste de prénom trouvée [ici](https://www.kaggle.com/kaggle/us-baby-names#NationalNames.csv) auquel j'ai ajouté une valeur à prédire en fonction d'une règle très simple.
 
-Le jeu de donnée contient contient donc une liste de prénom et une target à prédire que j'ai codé avec une petite règle qui renvoit "goodBoy" ou "badBoy" en fonction des lettres trouvées à une position donnée.
+Le jeu de donnée contient une liste de prénom et une target à prédire que j'ai codé avec une petite règle qui renvoit "goodBoy" ou "badBoy" en fonction des lettres trouvées à une position donnée. Par exemple, si la 1ère lettre est un C, renvoyer goodBoy sinon si la 3ème lettre est un h renvoyer goodBoy etc...
 
 Mon fichier d'entrainement **training_data.csv** est un csv contenant deux valeurs par ligne :
 
@@ -59,7 +59,7 @@ training_data[0]
 
 Ok, on a une liste **training_data** contenant 7499 données d'entrainement étant elles même des listes composées d'un prénom et d'une target à prédire.
 
-Par contre, un neurone, ça prend des données en entrée, ça fait des calculs et le résultat obtenu nous permet de faire des prédiction. Notre donnée d'entrée est pour l'instant un prénom. On va donc ici limiter le nombre de caractères à 5, transformer ces caractères en une liste de float correspondant à leur index ascii. On va également en profiter pour modifier la target afin qu'elle vaille 1 pour goodBoy et 0 pour badBoy.
+Par contre, un neurone, ça prend des données en entrée, ça fait des calculs et le résultat obtenu nous permet de faire des prédictions. Notre donnée d'entrée est pour l'instant un prénom. On va donc ici limiter le nombre de caractères à 5, transformer ces caractères en une liste de float correspondant à leur index ascii. On va également en profiter pour modifier la target afin qu'elle vaille 1 pour goodBoy et 0 pour badBoy.
 
 ```python
 def transformName(name) :
@@ -122,9 +122,9 @@ Chaque donnée d'entrée (elles sont ici au nombre de 5), est liée à notre neu
 
 ![alt text](/images/schema_neurone.png "Schéma du neurone")
 
-La valeur d'un neurone pour une entrée donnée correspond a la somme pondérée des entrées multipliées par des poids auquel on ajoute le biais du neurone. Cette valeure calculée va nous permettre de déduire l'output du neurone. Cette déduction est très simple, l'output vaut 1 (goodBoy) si la valeur V calculée est strictement supérieur à 0. Elle prend 0 pour badBoy dans le cas contraire.
+La valeur d'un neurone pour une entrée donnée correspond a la somme pondérée des entrées multipliées par leurs poids respectif auquel on ajoute le biais du neurone. Cette valeur calculée va nous permettre de déduire l'output du neurone. La déduction est simple, l'output vaut 1 (goodBoy) si la valeur V calculée est strictement supérieur à 0. Elle prend 0 pour badBoy dans le cas contraire.
 
-Voici ci-dessous la fonction calcul_output qui permet de calculer la valeur de notre neurone pour un prénom donné et de renvoyer l'output déduite :
+Voici ci-dessous la fonction calcul_output qui permet de calculer la valeur V de notre neurone pour un prénom donné et de renvoyer l'output déduite :
 
 ```python
 def cacul_output(row, poids, biais):
@@ -140,11 +140,11 @@ def cacul_output(row, poids, biais):
 
 ## Prédire -> mettre à jour <a class="anchor" id="predict-update"></a>
 
-Nous allons maintenant faire des prédictions sur l'ensemble de nos données. Lors de chaque prédictions, nous allons mettre à jour nos poids et notre billet pour essayer de faire mieux la prochaine fois.
+Nous allons maintenant faire des prédictions sur l'ensemble de nos données. Lors de chaque prédiction, nous allons mettre à jour nos poids et notre biais pour essayer de faire mieux la prochaine fois.
 
-Je vais définir le nombre d'époques que nous allons réaliser à 10. C'est quoi une époque ? Excellente question ! Une époque correspond au moment où nous aurons présenter l'ensemble de nos données à notre neurone. A ce moment là, nous aurons mis à jour nos poids 7499 fois ! Et on ne va pas s'arrêter là. On va présenter l'ensemble de nos données 10 fois à notre neurone soit 10 époques.
+Je vais définir le nombre d'époques que nous allons réaliser à 10. C'est quoi une époque ? Excellente question ! Une époque correspond au moment où nous aurons présenté l'ensemble de nos données à notre neurone. A ce moment là, nous aurons mis à jour nos poids 7499 fois ! Et on ne va pas s'arrêter là. On va présenter l'ensemble de nos données 10 fois à notre neurone soit 10 époques.
 
-La variable learning_rate est une constante permettant de mettre à jour nos poids et notre biais de façon "douce".
+La variable **learning_rate** est une constante permettant de mettre à jour nos poids et notre biais de façon plus ou moins "douce".
 La mise à jour des poids et du biais se fait de la manière suivante :
 
 ![alt text](/images/update_weights.png "Mise à jour des poids")
@@ -195,9 +195,10 @@ poids, biais = entrainement(formatedDataset)
     taux de précision : 0.7322309641285505
     taux de précision : 0.7322309641285505
 
-```python
+On voit ici qu'une seule époque aurait suffit car le taux de précision n'augmente plus dès la fin de la 1ère époque.
 Nous avons à la fin une liste de poids et un biais :
 
+```python
 poids
 ```
 
@@ -220,7 +221,7 @@ On va maintenant essayer d'utiliser notre méthode de prédiction sur de nouveau
 
 ## Prédiction sur de nouvelles données <a class="anchor" id="new-data"></a>
 
-On va juste formater nos données de la même façon que nous l'avons fait pour le jeu de donnée, appeler la méthode calcul_output avec nos poids et notre biais et retourner la prédiction goodBoy quand on récupère de calcul_output la valeur 1 :
+La fonction **testPrediction** ci-dessous prend un prénom en paramètre que l'on formate de la même façon que nous l'avons fait pour le jeu de donnée d'entrainement. On appele ensuite la méthode **calcul_output** avec nos poids et notre biais et on retourne la prédiction goodBoy quand on récupère la valeur 1 :
 
 ```python
 def testPrediction(name) :
@@ -234,9 +235,11 @@ def testPrediction(name) :
 testPrediction("Alex")
 ```
 
+    	goodBoy
+
 ## 22 neurones sur 4 couches ! <a class="anchor" id="new-data"></a>
 
-Ca a de la gueule ça non ? :-) On va pas recoder ça from scratch cette fois ci. On va utiliser la librairie Keras et vous allez voir que ça va être beaucoup plus simple...
+Ça a de la gueule ça non ? :-) Nous n'allons pas recoder ça from scratch cette fois ci mais plutôt utiliser la librairie Keras. Vous allez voir que ça va être beaucoup plus simple...
 
 Tout d'abord, on importe de quoi faire le boulot.
 

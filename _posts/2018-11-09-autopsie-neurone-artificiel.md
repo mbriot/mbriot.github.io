@@ -8,7 +8,7 @@ tags: machine-learning
 
 Créer un réseau de neurones comportant plusieurs couches de profondeur et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre a implémenter un seul neurone soi même me paraît être une bonne idée.
 
-Nous allons voir dans cet article comment le faire en python. Vous pouvez retrouver l'ensemble du code et les données d'entrainement dans ce repository [github](https://github.com/mbriot/mbriot.github.io).
+Nous allons voir dans cet article comment le faire en python. Vous pouvez retrouver l'ensemble du code et les données d'entrainement dans ce repository [github](https://github.com/mbriot/autopsie-neurone).
 
 <hr/>
 

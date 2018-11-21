@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Autopsie d'un neurone artificiel"
-description: "On fait des tests pour l'instant rien de plus"
+description: "Implémentation d'un neurone artificiel en python"
 date:   2018-11-09 11:00:00
 tags: machine-learning
 ---

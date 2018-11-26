@@ -1,12 +1,13 @@
 ---
 layout: post
 title:  "Autopsie d'un neurone artificiel"
-description: "Implementation d'un neurone artificiel en python"
+description: "Créer un réseau de neurones comportant plusieurs couches de profondeur et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre a implémenter un seul neurone soit même est une bonne idée."
+header-img: /images/autopsie-neurone/head-img.png
 date:   2018-11-09 11:00:00
 tags: machine-learning
 ---
 
-Créer un réseau de neurones comportant plusieurs couches de profondeur et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre a implémenter un seul neurone soi même me paraît être une bonne idée.
+Créer un réseau de neurones comportant plusieurs couches de profondeur et des milliers de neurones peut se faire de manière très simple grâce à des librairies comme [Keras](https://keras.io/). Néanmoins, si vous souhaitez comprendre ce que vous faites, apprendre a implémenter un seul neurone soit même est une bonne idée.
 
 Nous allons voir dans cet article comment le faire en python. Vous pouvez retrouver l'ensemble du code et les données d'entrainement dans ce repository [github](https://github.com/mbriot/autopsie-neurone).
 
@@ -28,7 +29,7 @@ Le jeu de donnée contient une liste de prénom et une target à prédire que j'
 Mon fichier d'entrainement **training_data.csv** est un csv contenant deux valeurs par ligne :
 
 1. le prénom sur lequel nous allons faire une prédiction
-2. le label goodboy ou badboy que notre neurone va devenoir apprendre à prédire
+2. le label goodboy ou badboy que notre neurone va devoir apprendre à prédire
 
 Nous allons tout d'abord lire nos données puis les préparer pour pouvoir les faire rentrer dans notre neurone.
 En python ça donne :
@@ -120,7 +121,7 @@ Bien. On a maintenant nos données prête à l'emploi. Il va falloir maintenant 
 
 Chaque donnée d'entrée (elles sont ici au nombre de 5), est liée à notre neurone par un poid. Voici un schéma permettant de mieux visualiser l'ensemble des paramètres :
 
-![alt text](/images/schema_neurone.png "Schéma du neurone")
+![alt text](/images/autopsie-neurone/schema_neurone.png "Schéma du neurone")
 
 La valeur d'un neurone pour une entrée donnée correspond a la somme pondérée des entrées multipliées par leurs poids respectif auquel on ajoute le biais du neurone. Cette valeur calculée va nous permettre de déduire l'output du neurone. La déduction est simple, l'output vaut 1 (goodBoy) si la valeur V calculée est strictement supérieur à 0. Elle prend 0 pour badBoy dans le cas contraire.
 
@@ -147,7 +148,7 @@ Je vais définir le nombre d'époques que nous allons réaliser à 10. C'est quo
 La variable **learning_rate** est une constante permettant de mettre à jour nos poids et notre biais de façon plus ou moins "douce".
 La mise à jour des poids et du biais se fait de la manière suivante :
 
-![alt text](/images/update_weights.png "Mise à jour des poids")
+![alt text](/images/autopsie-neurone/update_weights.png "Mise à jour des poids")
 
 Voici ci-dessous le code correspondant à la mise à jour des poids ainsi que le code permettant de présenter l'ensemble de nos données 10 fois à notre neurone :
 

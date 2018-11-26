@@ -17,6 +17,10 @@
     <!-- PrismJS -->
     <link rel="stylesheet" href="{{ "/css/prism.css" | prepend: site.baseurl }}">
 
+		{% if page.header-img %}
+		    <meta property="og:image" content="{{ site.url }}/{{ page.header-img }}" />
+		{% endif %}
+
 		{% if jekyll.environment == 'production' %}
 		{% include analytics.html %}
 		{% endif %}

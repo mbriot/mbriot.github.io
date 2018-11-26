@@ -28,7 +28,7 @@ Le jeu de donnée contient une liste de prénom et une target à prédire que j'
 Mon fichier d'entrainement **training_data.csv** est un csv contenant deux valeurs par ligne :
 
 1. le prénom sur lequel nous allons faire une prédiction
-2. le label goodboy ou badboy que notre neurone va devenoir apprendre à prédire
+2. le label goodboy ou badboy que notre neurone va devoir apprendre à prédire
 
 Nous allons tout d'abord lire nos données puis les préparer pour pouvoir les faire rentrer dans notre neurone.
 En python ça donne :

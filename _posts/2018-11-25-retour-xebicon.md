@@ -7,7 +7,7 @@ header-img: /images/xebicon2018/xebicon-2018.jpg
 tags: conference
 ---
 
-Le 20 novembre dernier avait lieu la Xebicon, la conférence annuelle de la SS2I Xebia. La conf avait lieu dans le magnifique palais Brongniart ancienne bourse de Paris. Voici mon retour sur les confs que j'ai trouvé particulièrement intéressante.
+Le 20 novembre dernier avait lieu la Xebicon, la conférence annuelle de la SS2I Xebia. La conf avait lieu dans le magnifique palais Brongniart ancienne bourse de Paris. Voici mon retour sur les confs que j'ai trouvé particulièrement intéressantes.
 
 ![alt text](/images/xebicon2018/palais-brongniart.jpg "Palais Brongniart de Paris")
 
@@ -22,9 +22,9 @@ Au programme :
 
 ### Optimisation d'enchère adWords par Oui.sncf <a class="anchor" id="adwords"></a>
 
-La feature team Astro de chez Oui.sncf est venue nous montrer le projet OuiBoost qu'ils ont réalisé en partenariat avec Xebia. Ce produit permet aux webmarketers d'optimiser le ROI de leurs campagnes adWords en leur permettant de choisir les meilleurs mots clés pour la meilleure enchère. En gros avoir une enchère minimale pour un maximum de clic tout en maximisant les revenus.
+La feature team Astro de chez Oui.sncf est venue nous montrer le projet OuiBoost qu'ils ont réalisé en partenariat avec Xebia. Ce produit permet aux webmarketers d'optimiser le ROI de leurs campagnes adWords en leur permettant de choisir les meilleurs mots clés pour la meilleure enchère. En gros avoir une enchère minimale pour un maximum de clics tout en maximisant les revenus.
 
-Ils utilisent l'APIs google AdWords pour obtenir leurs données d'entrainement et leur pipeline est composé de 2 prédicteurs et d'un moteur d'optimisation.
+Ils utilisent l'API google AdWords pour obtenir leurs données d'entrainement et leur pipeline est composé de 2 prédicteurs et d'un moteur d'optimisation.
 
 * Un premier modèle permet de prédire le coût pour un mot clé donné. Si je mets 1€ sur "train Lille Paris" combien vais-je payer ?
 * Un second modèle permet de prédire le revenu généré pour un mot clé. Si j'achète "train Lille Paris", combien vais-je gagner ?
@@ -60,7 +60,7 @@ Une petite prez d'un quart d'heure pour expliquer comment se passe le machine le
 Deux stratégies différentes à choisir en fonction du nombre de données d'entrainement et de la complexité des calculs que le réseau de neurones va devoir faire.
 
 * Duplicate & Synchronize :
-  On va ici dupliquer notre réseau de neurones tel quel. On aura donc besoin d'un serveur de paramètre permettant de stocker la valeur des poids des neurones en fonction de leur mise à jour dans les différents clones.
+  On va ici dupliquer notre réseau de neurones tel quel. On aura donc besoin d'un serveur de paramètres permettant de stocker la valeur des poids des neurones en fonction de leur mise à jour dans les différents clones.
   Cette stratégie est utile dans le cas de réseaux simples mais dont les calculs sont longs (réseaux convolutionnels par exemple). La contrepartie, c'est qu'on va perdre pas mal de temps à synchroniser nos millions de poids sur le réseau. Pour lutter contre ça, il est possible d'augmenter la taille des batchs d'entrainement.
 
 * Split :
@@ -79,7 +79,7 @@ Voici ce que Zeppelin peut faire :
 
 * cacher le code des cellules du notebook pour le passer en mode reporting
 * gérer les droits utilisateurs finement
-* supporter beaucoup de langages et sources de données : cassandra, spark, java, scala, python, jdbc, shell...
+* supporter beaucoup de languages et sources de données : cassandra, spark, java, scala, python, jdbc, shell...
 * mélanger tout ça à l'intérieur d'un même notebook !
 * interagir avec un notebook ou Zeppelin via API : mise en prod via CI/CD du notebook par exemple
 * planifier l'exécution d'un notebook via un CRON.
@@ -87,7 +87,7 @@ Voici ce que Zeppelin peut faire :
 
 J'en oublie surement encore beaucoup, je vous laisse voir la doc si ça vous intéresse.
 
-### sparkNLP : traitement du langage naturel avec Spark <a class="anchor" id="spark"></a>
+### sparkNLP : traitement du language naturel avec Spark <a class="anchor" id="spark"></a>
 
 Dans cette conf, Aurore de Amaral nous présente la récente API spark-NLP qui vient juste au dessus de spark-ML.
 
